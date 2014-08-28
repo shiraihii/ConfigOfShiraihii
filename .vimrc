@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " 导入插件
+Bundle 'https://github.com/vim-scripts/vundle'
 Bundle 'https://github.com/Lokaltog/vim-powerline'
 "Bundle 'https://github.com/nathanaelkane/vim-indent-guides'
 Bundle 'https://github.com/vim-scripts/a.vim'
