@@ -70,10 +70,11 @@ set timeoutlen=0
 set smartindent
 " 不将Tab展开为Space, 主要写Makefile用
 set noexpandtab
-set cindent
+autocmd BufNewFile,BufRead *.cpp,*.c,*.h set cindent
 set tabstop=4
 set softtabstop=4 
 set shiftwidth=4
+autocmd BufNewFile,BufRead *.yaml,*.yml set expandtab tabstop=2 softtabstop=2 shiftwidth=2
 " 显示缩进导引线
 "let g:indent_guides_enable_on_vim_startup=1
 "let g:indent_guides_start_level=2
