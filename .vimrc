@@ -181,7 +181,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown,php setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -225,10 +225,26 @@ func! CompileScss()
 	let compilecmd="!sass %:%<\.css"
 	exec compilecmd
 endfunc
+func! CompileC()
+	exec "w"
+	let compilecmd="!gcc % -o %< -Wall"
+	exec compilecmd
+endfunc
+func! CompileCpp()
+	exec "w"
+	let compilecmd="!g++ % -o %< -Wall"
+	exec compilecmd
+endfunc
 func! CompileCode()
 	exec "w"
 	if &filetype == "scss"
 		exec "call CompileScss()"
+	endif
+	if &filetype == "c"
+		exec "call CompileC()"
+	endif
+	if &filetype == "cpp"
+		exec "call CompileCpp()"
 	endif
 endfunc
 map <F5> :call CompileCode()<CR>
