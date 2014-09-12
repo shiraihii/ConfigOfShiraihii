@@ -44,11 +44,11 @@ fi
 
 # color of caret
 if [ $UID -eq 0 ]; then
-	CARETCOLOR="red";
-	CARETCHAR='#'
+	CARETCOLOR="red"
+	CARETCHAR="#"
 else
-	CARETCOLOR="green";
-	CARETCHAR='$'
+	CARETCOLOR="green"
+	CARETCHAR="$"
 fi
 
 export EDITOR="vim"
@@ -62,5 +62,5 @@ promptinit
 prompt clint 
 autoload -U colors && colors
 #export PS1="%B%n@%~ %b"
-export PS1="%F{red}<%F{$CARETCOLOR}%B%n%b@%F{cyan}%m%F{white}:%F{yellow}%~%F{red}>
-#%(2L.%B%h%b%(?..[%?%1v] )%(2v.%U%B%F{yellow}%2v%f%b%u.)%f %B%F{Blue}$CARETCHAR%f%b "
+export PS1="%F{red}<%F{$CARETCOLOR}%B%n%b@%F{cyan}%m%F{white}:%F{yellow}%~%F{red}>%f
+%(2L.%B%h%b%(?..[%?%1v] )%(2v.%U%B%F{yellow}%2v%f%b%u.)%f %B%F{$CARETCOLOR}$CARETCHAR%f%b "
