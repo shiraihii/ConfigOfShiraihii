@@ -17,9 +17,9 @@ Bundle 'https://github.com/vim-scripts/SuperTab'
 " 语法检查
 Bundle 'https://github.com/scrooloose/syntastic'
 " 快速移动
-Bundle 'Lokaltog/vim-easymotion'
+Bundle 'https://github.com/Lokaltog/vim-easymotion'
 " 高亮方案
-Bundle 'lsdr/monokai'
+Bundle 'https://github.com/lsdr/monokai'
 
 " Taglist插件的Tags文件地址
 set tags=tags;
@@ -96,7 +96,7 @@ set nofoldenable
 set tags=tags;
 set autochdir
 " 自动打开Taglist
-let Tlist_Auto_Open=1
+let Tlist_Auto_Open=0
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1 
 let g:winManagerWindowLayout='FileExplorer|TagList'
@@ -235,6 +235,11 @@ func! CompileCpp()
 	let compilecmd="!g++ % -o %< -Wall"
 	exec compilecmd
 endfunc
+func! CompileTex()
+	exec "w"
+	let compilecmd="!make"
+	exec compilecmd
+endfunc
 func! CompileCode()
 	exec "w"
 	if &filetype == "scss"
@@ -246,7 +251,23 @@ func! CompileCode()
 	if &filetype == "cpp"
 		exec "call CompileCpp()"
 	endif
+	if &filetype == "tex"
+		exec "call CompileTex()"
+	endif
 endfunc
 map <F5> :call CompileCode()<CR>
 imap <F5> <ESC>:call CompileCode()<CR>
 vmap <F5> <ESC>:call CompileCode()<CR>
+
+func! ExecTex()
+	let execcmd="!zathura %<.pdf"
+	exec execcmd
+endfunc
+func! ExecCode()
+	if &filetype == "tex"
+		exec "call ExecTex()"
+	endif
+endfunc
+map <F7> :call ExecCode()<CR>
+imap <F7> <ESC>:call ExecCode()<CR>
+vmap <F7> <ESC>:call ExecCode()<CR>

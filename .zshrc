@@ -13,15 +13,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # ssh to my host
-alias sshr=
-alias sshrn=
-alias sshm=
-alias sshmn=
-alias sftpr=
-alias sftpm=
-alias sftprn=
-alias sftpmn=
-alias sshg=
+# for private reason
+# def ssh's alias by sourcing another file
+. ./.zshrcssh
+
 # Minecraft
 alias jmc='java -jar ~/Games/Minecraft.jar'
 # Cp Downloads's newest to 
@@ -52,7 +47,6 @@ else
 fi
 
 export EDITOR="vim"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U compinit
 compinit
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
@@ -64,3 +58,7 @@ autoload -U colors && colors
 #export PS1="%B%n@%~ %b"
 export PS1="%F{red}<%F{$CARETCOLOR}%B%n%b@%F{cyan}%m%F{white}:%F{yellow}%~%F{red}>%f
 %(2L.%B%h%b%(?..[%?%1v] )%(2v.%U%B%F{yellow}%2v%f%b%u.)%f %B%F{$CARETCOLOR}$CARETCHAR%f%b "
+# TeX Live 2014
+export MANPATH=${MANPATH}:/usr/local/texlive/2014/texmf-dist/doc/man
+export INFOPATH=${INFOPATH}:/usr/local/texlive/2014/texmf-dist/doc/info
+export PATH=${PATH}:/usr/local/texlive/2014/bin/x86_64-linux
