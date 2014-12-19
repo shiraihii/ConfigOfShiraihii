@@ -7,7 +7,7 @@ call vundle#rc()
 " 导入插件
 Bundle 'https://github.com/vim-scripts/vundle'
 Bundle 'https://github.com/Lokaltog/vim-powerline'
-"Bundle 'https://github.com/nathanaelkane/vim-indent-guides'
+Bundle 'https://github.com/nathanaelkane/vim-indent-guides'
 Bundle 'https://github.com/vim-scripts/a.vim'
 Bundle 'https://github.com/vim-scripts/fcitx.vim'
 Bundle 'https://github.com/scrooloose/nerdcommenter'
@@ -76,8 +76,8 @@ set softtabstop=4
 set shiftwidth=4
 autocmd BufNewFile,BufRead *.yaml,*.yml set expandtab tabstop=2 softtabstop=2 shiftwidth=2
 " 显示缩进导引线
-"let g:indent_guides_enable_on_vim_startup=1
-"let g:indent_guides_start_level=2
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
 " 基于缩进或语法进行代码折叠
@@ -263,9 +263,25 @@ func! ExecTex()
 	let execcmd="!zathura %<.pdf"
 	exec execcmd
 endfunc
+func! ExecC()
+	exec "w"
+	let compilecmd="!./%<"
+	exec compilecmd
+endfunc
+func! ExecCpp()
+	exec "w"
+	let compilecmd="!./%<"
+	exec compilecmd
+endfunc
 func! ExecCode()
 	if &filetype == "tex"
 		exec "call ExecTex()"
+	endif
+	if &filetype == "c"
+		exec "call ExecC()"
+	endif
+	if &filetype == "cpp"
+		exec "call ExecCpp()"
 	endif
 endfunc
 map <F7> :call ExecCode()<CR>

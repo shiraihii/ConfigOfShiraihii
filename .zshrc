@@ -15,7 +15,7 @@ alias l='ls -CF'
 # ssh to my host
 # for private reason
 # def ssh's alias by sourcing another file
-. ./.zshrcssh
+. ~/.zshrcssh
 
 # Minecraft
 alias jmc='java -jar ~/Games/Minecraft.jar'
