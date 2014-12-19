@@ -259,6 +259,15 @@ map <F5> :call CompileCode()<CR>
 imap <F5> <ESC>:call CompileCode()<CR>
 vmap <F5> <ESC>:call CompileCode()<CR>
 
+func! Gnumake()
+	exec "w"
+	let makecmd="!if [[ -f './Makefile' || -f './makefile' || -f './MAKEFILE' ]];then;make;else;cd ..&&make;fi"
+	exec makecmd
+endfunc
+map <F6> :call Gnumake()<CR>
+imap <F6> <ESC>:call Gnumake()<CR>
+vmap <F6> <ESC>:call Gnumake()<CR>
+
 func! ExecTex()
 	let execcmd="!zathura %<.pdf"
 	exec execcmd
